@@ -1,45 +1,27 @@
-name: CI
+name: Run PHPUnit Tests
 
 on:
   push:
     branches: [ main ]
   pull_request:
+    branches: [ main ]
 
 jobs:
-  phpunit:
+  php-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Setup PHP
+      - name: ⚙️ Setup PHP 8.2
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
-          extensions: sqlite, pdo_sqlite
+          php-version: '8.2'
+          extensions: pdo, pdo_mysql, pdo_sqlite
 
-      - name: Install dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist
+      - name: 🧰 Install dependencies
+        run: composer install --no-interaction --prefer-dist
 
-      - name: Run PHPUnit
-        run: |
-          mkdir -p build/logs build/coverage/html
-          ./vendor/bin/phpunit --coverage-clover=build/coverage/clover.xml
-
-      - name: Upload JUnit report
-        uses: actions/upload-artifact@v3
-        with:
-          name: junit-report
-          path: build/logs/junit.xml
-
-      - name: Upload coverage HTML
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-html
-          path: build/coverage/html
-
-      - name: Upload coverage Clover
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-clover
-          path: build/coverage/clover.xml
+      - name: ✅ Run PHPUnit
+        run: vendor/bin/phpunit --configuration phpunit.xml
