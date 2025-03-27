@@ -1,0 +1,28 @@
+name: Run PHPUnit Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  php-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout le repo
+        uses: actions/checkout@v3
+
+      - name: ⚙️ Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo, pdo_mysql
+          coverage: none
+
+      - name: 🧰 Installer les dépendances
+        run: composer install
+
+      - name: ✅ Lancer PHPUnit
+        run: vendor/bin/phpunit

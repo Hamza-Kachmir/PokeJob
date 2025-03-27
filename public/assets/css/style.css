@@ -1,0 +1,519 @@
+
+a {
+  text-decoration: none;
+}
+
+/* ===================================================================
+   Variables de couleurs et polices
+==================================================================== */
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-VariableFont_opsz,wght.ttf");
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat-VariableFont_wght.ttf");
+}
+
+/* Mode clair */
+:root {
+  --bg:             #f0f0f0;    /* Fond général */
+  --text:           #3c3c3c;    /* Texte et bordures */
+  --card-bg:        #a9b4c2;    /* Fond des cards */
+  --navbar-bg:      #d4d4d4;    /* Fond de la navbar */
+  --border:         #8C8C8C;    /* Bordures légères */
+  --accent:         #142949;    /* Accent pour hover sur liens, etc. */
+  --btn-base:       #FFC44D;    /* Couleur de base */
+}
+
+/* Mode sombre */
+[dark-theme="dark"] {
+  --bg:             #504C4C;
+  --text:           #e0e0e0;
+  --card-bg:        #2e2e2e;
+  --navbar-bg:      #393939;
+  --border:         #302E2E;
+  --accent:         #a9b4c2;
+  --btn-base:       #BB7C04;
+}
+
+/* ===================================================================
+   Styles généraux
+==================================================================== */
+body {
+  padding-top: 100px;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+}
+
+.text-center,
+label,
+input {
+  color: var(--text) !important;
+}
+
+.alert-success { color: #0a3622 !important; }
+.alert-danger  { color: #58151c !important; }
+
+a,
+.outfit-link {
+  color: var(--text) !important;
+  font-weight: 700 !important;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ===================================================================
+   Champs de saisie et formulaires
+==================================================================== */
+input,
+textarea,
+select {
+  background-color: var(--bg) !important;
+  border: 1px solid var(--text) !important;
+  color: var(--text) !important;
+  width: 100%;
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--text) !important;
+}
+
+/* ===================================================================
+   Cards
+==================================================================== */
+.card {
+  background-color: var(--card-bg);
+  border: 2px solid var(--text);
+  box-shadow: 0 0 10px var(--card-bg);
+  border-radius: 10px;
+}
+.card-header {
+  border-bottom: 2px solid var(--text);
+}
+
+/* ===================================================================
+   Navbar
+==================================================================== */
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  box-shadow: 0 0 15px 0 var(--border);
+}
+.logo-navbar,
+.footer-logo {
+  width: 130px;
+  height: auto;
+}
+
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav {
+  margin-right: 10px;
+}
+
+/* ===================================================================
+   Boutons et hover
+==================================================================== */
+/* Pour les liens, "Nouveau" et "Voir les détails" : seul le texte change au hover */
+a:hover,
+.new-text:hover,
+.detail-text:hover {
+  color: var(--accent) !important;
+  background-color: transparent !important;
+}
+
+/* Boutons classiques (Enregistrer, S'inscrire, etc.) */
+.btn {
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+.btn-primary {
+  background-color: var(--btn-base);
+  color: var(--text) !important;
+  font-weight: bold;
+  border: 2px solid var(--text);
+}
+.btn-primary:hover {
+  background-color: var(--btn-base);
+  border-color: var(--btn-base);
+  color: var(--text) !important;
+}
+
+/* Boutons rouges (Reset, Supprimer la photo, etc.) */
+.btn-danger {
+  border: 2px solid var(--text);
+}
+
+/* ===================================================================
+   Barre de recherche
+==================================================================== */
+#searchCompany {
+  cursor: pointer;
+}
+
+/* ===================================================================
+   Photos et upload
+==================================================================== */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid var(--text);
+}
+.file-upload-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #f0f0f0 !important;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* ===================================================================
+   Footer
+==================================================================== */
+.my-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto 0;
+  width: 80%;
+  border-top: 3px solid var(--card-bg);
+  text-align: center;
+  font-weight: 500;
+}
+.my-footer p {
+  margin-top: 15px;
+  white-space: normal;
+}
+.my-footer-logo {
+  width: 100px;
+}
+
+/* ===================================================================
+   Toggle pour le mode sombre
+==================================================================== */
+.theme {
+  cursor: pointer;
+}
+.toggle-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.toggle-slot {
+  font-size: 10px;
+  position: relative;
+  height: 3.5em;
+  width: 7em;
+  border-radius: 10em;
+  background-color: var(--bg);
+  transition: background-color 250ms;
+}
+.toggle-checkbox:checked ~ .toggle-slot {
+  background-color: var(--bg);
+}
+.toggle-button {
+  transform: translate(0.3em, 0.25em);
+  position: absolute;
+  height: 3em;
+  width: 3em;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: inset 0 0 0 0.75em var(--card-bg);
+  transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
+}
+.toggle-checkbox:checked ~ .toggle-slot .toggle-button {
+  background-color: var(--bg);
+  box-shadow: inset 0 0 0 0.75em var(--accent);
+  transform: translate(3.65em, 0.25em);
+}
+.sun-icon {
+  position: absolute;
+  height: 6em;
+  width: 6em;
+  color: #ffbb52;
+}
+.sun-icon-wrapper {
+  position: absolute;
+  height: 6em;
+  width: 6em;
+  opacity: 1;
+  transform: translate(2em, 2em) rotate(15deg);
+  transform-origin: 50% 50%;
+  transition: opacity 150ms, transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
+}
+.toggle-checkbox:checked ~ .toggle-slot .sun-icon-wrapper {
+  opacity: 0;
+  transform: translate(3em, 2em) rotate(0deg);
+}
+.moon-icon {
+  position: absolute;
+  height: 6em;
+  width: 6em;
+  color: white;
+}
+.moon-icon-wrapper {
+  position: absolute;
+  height: 6em;
+  width: 6em;
+  opacity: 0;
+  transform: translate(11em, 2em) rotate(0deg);
+  transform-origin: 50% 50%;
+  transition: opacity 150ms, transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
+}
+.toggle-checkbox:checked ~ .toggle-slot .moon-icon-wrapper {
+  opacity: 1;
+  transform: translate(2em, 2em) rotate(-15deg);
+}
+
+/* ===================================================================
+   Kanban et liste de candidatures
+==================================================================== */
+.row.status-cards {
+  display: flex;
+  align-items: stretch;
+}
+.row.status-cards > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+.row.status-cards .card {
+  flex: 1;
+  min-height: 300px;
+}
+.new-text {
+  color: var(--text);
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-block;
+}
+.company-label {
+  margin-bottom: 5px;
+  position: relative;
+  display: block;
+  padding-right: 25px;
+}
+.company-name {
+  color: var(--text);
+}
+.detail-container {
+  text-align: right;
+  margin-top: 10px;
+}
+.detail-text {
+  color: var(--text);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.draggable-item {
+  background-color: var(--navbar-bg);
+  border-radius: 4px;
+  padding: 5px 5px 5px 10px;
+  cursor: pointer;
+  border: 2px solid var(--text) !important;
+  position: relative;
+}
+.delete-cross {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  cursor: pointer;
+  color: #ff0000 !important;
+}
+.delete-cross:hover {
+  color: #ff0000 !important;
+}
+#userModal .delete-cross {
+  position: static;
+}
+
+/* ===================================================================
+   Carte de bienvenue
+==================================================================== */
+.welcome-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  color: var(--text);
+  position: relative;
+}
+.welcome-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--text);
+}
+.welcome-text h5,
+.welcome-text p {
+  color: var(--text);
+}
+.welcome-actions {
+  display: flex;
+}
+.form-control {
+  border: 2px solid var(--text) !important;
+}
+#searchCompany:hover,
+#searchCompany:focus {
+  box-shadow: none;
+  outline: none;
+}
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.search-wrapper .search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--accent);
+}
+
+/* ===================================================================
+   Style pour l'étiquette d'un utilisateur dans la modal
+==================================================================== */
+.user-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--navbar-bg);
+  border: 2px solid var(--text);
+  border-radius: 4px;
+  padding: 10px;
+  color: var(--text);
+}
+.user-info p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.user-info .user-name {
+  margin-bottom: 5px;
+}
+
+/* ===================================================================
+   Footer
+==================================================================== */
+.my-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto 0;
+  width: 70%;
+  border-top: 3px solid var(--btn-base);
+  text-align: center;
+  font-weight: 500;
+}
+.my-footer p {
+  margin-top: 15px;
+  white-space: normal;
+}
+.my-footer-logo {
+  width: 100px;
+}
+
+/* Style pour la barre de défilement */
+body::-webkit-scrollbar {
+  width: 15px; /* Largeur de la barre de défilement */
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--navbar-bg); /* Couleur de la piste de la barre de défilement */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--text); /* Couleur de la barre de défilement */
+  border-radius: 10px; /* Arrondir les coins de la barre de défilement */
+  border: 3px solid var(--navbar-bg); /* Bordure de la barre de défilement */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--btn-base); /* Couleur de la barre de défilement au survol */
+}
+
+
+
+/* Styles pour la navbar en mode mobile */
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%; /* Assure que la navbar prend toute la largeur */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px; /* Augmente la hauteur de la navbar */
+  }
+
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navbar-toggler {
+    display: inline-block; /* Affiche le bouton de toggle */
+    color: var(--navbar-bg);
+    z-index: 10; /* Assure que le bouton est au-dessus du logo */
+  }
+
+  .navbar-brand {
+    position: absolute; /* Positionne le logo de manière absolue */
+    left: 50%;
+    transform: translateX(-50%); /* Centre le logo */
+    z-index: 5; /* Assure que le logo est au-dessus du contenu mais en dessous des boutons */
+  }
+
+  .navbar-brand img {
+    max-width: 100%; /* Assure que l'image du logo s'adapte à la largeur disponible */
+    height: auto; /* Conserve les proportions de l'image */
+  }
+
+  .fa-bars {
+    color: var(--text);
+  }
+
+
+  .navbar-collapse {
+    display: none; /* Masque les éléments de navigation par défaut */
+    flex-direction: column; /* Disposition en colonne pour le menu déroulant */
+    width: 100%;
+    background-color: var(--navbar-bg);
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+
+  .navbar-collapse.show {
+    display: flex; /* Affiche les éléments de navigation lorsque le bouton est cliqué */
+  }
+
+  .navbar-nav {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+    color: var(--text) !important;
+  }
+}

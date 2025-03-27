@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="CLI Arguments" tests="12" assertions="23" errors="0" failures="0" skipped="0" time="0.013542">
+    <testsuite name="CompanyCounterTest" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\CompanyCounterTest.php" tests="3" assertions="4" errors="0" failures="0" skipped="0" time="0.006978">
+      <testcase name="testInitialCountIsZero" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\CompanyCounterTest.php" line="18" class="CompanyCounterTest" classname="CompanyCounterTest" assertions="1" time="0.005682"/>
+      <testcase name="testMultipleIncrements" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\CompanyCounterTest.php" line="23" class="CompanyCounterTest" classname="CompanyCounterTest" assertions="1" time="0.000537"/>
+      <testcase name="testResetAfterIncrement" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\CompanyCounterTest.php" line="30" class="CompanyCounterTest" classname="CompanyCounterTest" assertions="2" time="0.000759"/>
+    </testsuite>
+    <testsuite name="ContactTest" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\ContactTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.000682">
+      <testcase name="testAddContact" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\ContactTest.php" line="27" class="ContactTest" classname="ContactTest" assertions="2" time="0.000682"/>
+    </testsuite>
+    <testsuite name="JobTest" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\JobTest.php" tests="3" assertions="8" errors="0" failures="0" skipped="0" time="0.002706">
+      <testcase name="testAddAndGetJob" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\JobTest.php" line="40" class="JobTest" classname="JobTest" assertions="3" time="0.001145"/>
+      <testcase name="testGetJobByIdAndDelete" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\JobTest.php" line="48" class="JobTest" classname="JobTest" assertions="3" time="0.000898"/>
+      <testcase name="testUpdateJobStatus" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\JobTest.php" line="57" class="JobTest" classname="JobTest" assertions="2" time="0.000663"/>
+    </testsuite>
+    <testsuite name="UserTest" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\UserTest.php" tests="5" assertions="9" errors="0" failures="0" skipped="0" time="0.003175">
+      <testcase name="testAddAndGetUser" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\UserTest.php" line="28" class="UserTest" classname="UserTest" assertions="2" time="0.000645"/>
+      <testcase name="testGetUserByEmailNotFound" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\UserTest.php" line="35" class="UserTest" classname="UserTest" assertions="1" time="0.000691"/>
+      <testcase name="testUpdateEmailAndPassword" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\UserTest.php" line="40" class="UserTest" classname="UserTest" assertions="2" time="0.000626"/>
+      <testcase name="testDeleteUser" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\UserTest.php" line="53" class="UserTest" classname="UserTest" assertions="2" time="0.000603"/>
+      <testcase name="testEmailExistsForAnotherUser" file="C:\Users\hamza\Desktop\WorkSpace\PokeJob\tests\php\Models\UserTest.php" line="61" class="UserTest" classname="UserTest" assertions="2" time="0.000610"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
