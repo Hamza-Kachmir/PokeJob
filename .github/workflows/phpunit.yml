@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  php-tests:
+  phpunit:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,4 +24,4 @@ jobs:
         run: composer install --no-interaction --prefer-dist
 
       - name: ✅ Run PHPUnit
-        run: vendor/bin/phpunit --configuration phpunit.xml
+        run: php vendor/bin/phpunit --configuration phpunit.xml
