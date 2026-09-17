@@ -199,7 +199,12 @@ body > .container {
 
 .page-shell {
   margin-top: 0 !important;
+  padding-bottom: 2.5rem;
   padding-top: 0 !important;
+}
+
+#dashboardApp {
+  padding-bottom: 0;
 }
 
 .is-hidden {
@@ -957,6 +962,7 @@ main .rounded-3::before {
 .storage-option h3 {
   margin: 0 0 0.25rem;
   font-size: 1.05rem;
+  font-weight: 750;
 }
 
 .storage-option p {
@@ -1597,6 +1603,7 @@ textarea.form-control {
   min-height: 18rem;
   border: 0;
   border-top: 4px solid var(--status-color, var(--color-primary));
+  border-bottom: 4px solid var(--status-color, var(--color-primary));
   box-shadow: var(--shadow-sm) !important;
 }
 
@@ -2242,12 +2249,33 @@ textarea.form-control {
     padding-bottom: 0;
   }
 
+  main.container.page-shell {
+    max-width: 43rem;
+  }
+
   .my-footer {
     position: static;
   }
 
   .hero-overview {
     display: block;
+  }
+
+  .storage-options {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-actions {
+    width: min(100%, 24rem);
+    margin-inline: auto;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .welcome-actions .search-wrapper,
+  .welcome-actions .btn {
+    width: 100%;
+    margin-left: 0 !important;
   }
 
   .account-sections {
