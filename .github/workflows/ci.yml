@@ -1,0 +1,28 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: shivammathur/setup-php@b604ade2a87db23f8871b7182e69ec5e75effb45
+        with:
+          php-version: "8.2"
+          extensions: mbstring, pdo_mysql
+          coverage: none
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+      - run: composer install --no-interaction --prefer-dist --no-progress
+      - run: composer validate --strict --no-interaction
+      - run: composer audit --locked --no-interaction
+      - run: find app public tests -name "*.php" -print0 | xargs -0 -n1 php -l
+      - run: find public/assets/js -name "*.js" -print0 | xargs -0 -n1 node --check
+      - run: composer test
